@@ -31,6 +31,31 @@ void print_result( const vector<Process> &procs , const vector<pair<int,int>> ga
     cout << "processes "<< endl;
     cout << "PID\tAT\tBT\tCT\tTAT\tWT\n";
     double sum_tat=0.0 , sum_wt=0.0 ;
-    
 
+    for(auto &p:procs){
+        cout<< p.pid << "\t" << p.arrival_time << "\t"<<p.burst_orig << "\t"<< p.priority << "\t"<< p.completion << "\t"<< p.turnaround_time << "\t"<< p.waiting_time << "\n";
+        sum_tat += p.turnaround_time ;
+        sum_wt += p.waiting_time ;
+    }
+
+    /* 
+    how to iterate over a vector of pairs
+    
+    well , it's similar to over a vector of any other data type 
+
+        for(auto &pr : ganttt ){
+            pr.first  --> first element of pair 
+            pr.second --> second element of pair 
+        }
+    */
+
+    for(auto &pr : gantt ){
+        cout << " P" << pr.first << " |" << pr.second ;
+    }
+
+}
+
+void simulating_FDFS(vector<Process> &procs ){
+
+    
 }
