@@ -76,7 +76,13 @@ void simulating_FDFS(vector<Process> &procs ){
         int time = 0;
         vector<pair<int,int>> timeline ;
         for(auto &p:procs){
-            
-        }
+            if(time<p.arrival_time) time=p.arrival_time;
+            timeline.push_back({p.id,time})
+            time += p.burst_time ; 
+            p.completion=time ;
+            p.turnaround_time = p.completion - p.arrival_time;
+            p.waiting_time = p.turnaround_time - p.burst_time ;
    } 
+    print_result(procs, timeline);
+    
 }
