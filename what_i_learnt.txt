@@ -1,0 +1,2 @@
+1) always use & for to make the permanent changes inside the memory 
+2) you can write lambda functions by using [](params){ body} 
