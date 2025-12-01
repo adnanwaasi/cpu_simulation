@@ -57,5 +57,26 @@ void print_result( const vector<Process> &procs , const vector<pair<int,int>> ga
 
 void simulating_FDFS(vector<Process> &procs ){
 
+    cout << "Simulating FDFS Scheduling Algorithm\n";
+    /* 
+    i am copying the code tbh i am still learning about stuffs like the lambda functions and all
+    []  this is called a lambda capture clause
+    ()  this is the parameter list
+    {}  this is the function body
+    -> return type
+    */
+   sort(procs.begin(), procs.end(), [] ( const Process $a , const Process &b) {
+        if (a.arrival_time==b.arrival_time){
+            return a.pid < b.pid ;
+        } 
+        return a.arrival_time < b.arrival_time ;
     
+        });
+
+        int time = 0;
+        vector<pair<int,int>> timeline ;
+        for(auto &p:procs){
+            
+        }
+   } 
 }
