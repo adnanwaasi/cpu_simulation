@@ -1,2 +1,9 @@
 1) always use & for to make the permanent changes inside the memory 
 2) you can write lambda functions by using [](params){ body} 
+3) you can give default values to fn params just like in python 
+4) then about priority queue 
+    - you can use a data container tuple which can contain distinct primitive data types 
+    - then you should tell what type of container it can be 
+    - learnt the greater<> which is comparator and converts it into min_heap 
+important :
+     C++ is the fastest thing if i used python this would've taken hours 
