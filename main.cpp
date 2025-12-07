@@ -141,6 +141,52 @@ void preemptive_priority(vector<Process> &procs){
     }
 
 
+// okay one last scheduling algorithm to go preemptive SJF
+
+void preemptive_SJF(vector<Process> &procs){
+    cout << "Simulating Preemptive SJF Scheduling Algorithm\n";
+    // through goes the code using heaps 
+    int n = procs.size();
+    int time =0 , completed =0 ;
+    vector<pair<int,int>> gantt;
+    int last_pid = -1 ;
+
+    priority_queue< tuple<int,int,int> , 
+    vector<tuple<int,int,int>> , 
+     greater<>> 
+        pq ; // min-heap based on burst time
+    while(completed < n ){
+        for(int i=0;i<n;i++){
+            if(!procs[i].finished && procs[i].arrival_time ==time )
+                pq.push({procs[i].burst_time ,procs[i].pid,i });
+        }
+    
+    if (pq.empty()){
+        time++;
+        continue ; 
+    } 
+    auto [bt,pid,idx]=pq.top();
+    pq.pop();
+    if(last_pid != pid){
+        gantt.push_back({pid,time});
+        last_pid=procs[idx].pid ;
+
+    }
+    procs[idx].burst_time--;
+    time++; 
+    if (procs[idx].burst_time>0){
+        pq.push({procs[idx].burst_time, procs[idx].pid, idx});
+    } else {
+        procs[idx].completion = time ;
+        procs[idx].turnaround_time= time - procs[idx].arrival_time;
+        procs[idx].waiting_time = procs[idx].turnaround_time - procs[idx].burst_orig;
+        procs[idx].finished = true ;
+        completed++;
+    }
+    }
+    print_result(procs, gantt);
+}
+    
 int main(){
     /*
         Let's create some processes to simulate the scheduling algorithm 
@@ -151,7 +197,7 @@ int main(){
         {3,2,8,8,4},
         {4,3,6,6,3}
     };
-        preemptive_priority(processes);
+        preemptive_SJF(processes);
 
     return 0;
 }                          

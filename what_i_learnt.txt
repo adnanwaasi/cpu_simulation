@@ -7,3 +7,6 @@
     - learnt the greater<> which is comparator and converts it into min_heap 
 important :
      C++ is the fastest thing if i used python this would've taken hours 
+
+i have learnt the essentials and know how these take place 
+i wont do this regularly
